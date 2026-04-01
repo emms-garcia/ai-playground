@@ -49,3 +49,17 @@ The same agent built manually with LangGraph, exposing the internals that `creat
 ```bash
 uv run langgraph_agent_example.py
 ```
+
+<div align="center">
+  <img src="assets/langgraph_agent_example.png" alt="langgraph_agent_example graph" />
+</div>
+
+To regenerate:
+
+```bash
+GROQ_API_KEY=<GROQ_API_KEY> uv run python -c "
+from langgraph_agent_example import graph
+with open('assets/langgraph_agent_example.png', 'wb') as f:
+    f.write(graph.get_graph().draw_mermaid_png())
+"
+```
