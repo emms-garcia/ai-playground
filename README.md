@@ -50,6 +50,7 @@ The same agent built manually with LangGraph, exposing the internals that `creat
 uv run langgraph_agent_example.py
 ```
 
+
 <div align="center">
   <img src="assets/langgraph_agent_example.png" alt="langgraph_agent_example graph" />
 </div>
@@ -57,9 +58,29 @@ uv run langgraph_agent_example.py
 To regenerate:
 
 ```bash
-GROQ_API_KEY=<GROQ_API_KEY> uv run python -c "
+uv run python -c "
 from langgraph_agent_example import graph
 with open('assets/langgraph_agent_example.png', 'wb') as f:
     f.write(graph.get_graph().draw_mermaid_png())
 "
+```
+
+
+### `langgraph_checkpointer_example.py`
+
+A simple Groq-backed LangGraph chat that preserves conversation state with `InMemorySaver`. Demonstrates:
+
+- Compiling a `StateGraph` with `compile(checkpointer=checkpointer)`
+- Accumulating chat messages with `add_messages`
+- Continuing a conversation by reusing the same `thread_id`
+
+```bash
+uv run langgraph_checkpointer_example.py
+```
+
+Try this flow:
+
+```text
+my name is Emmanuel
+what is my name?
 ```
