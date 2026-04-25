@@ -6,12 +6,11 @@ from typing_extensions import TypedDict
 from pydantic import SecretStr
 
 from langchain.chat_models import init_chat_model
-from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage, AIMessage, BaseMessage, ToolMessage, SystemMessage
+from langchain_core.tools import tool
 from langgraph.graph import StateGraph, END
 from langgraph.graph.message import add_messages
 from langgraph.prebuilt import ToolNode
-from langgraph.store.memory import InMemoryStore
 
 
 class AppState(TypedDict):
@@ -84,7 +83,7 @@ graph = (
     .add_conditional_edges("model", should_continue)
     .add_edge("tools", "collect_artifacts")
     .add_edge("collect_artifacts", "model")
-    .compile(store=InMemoryStore())
+    .compile()
 )
 
 

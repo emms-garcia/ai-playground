@@ -6,7 +6,7 @@ from langchain.chat_models import init_chat_model
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-SYSTEM_PROMPT = "You are a concise assistant for {company_name}."
+SYSTEM_PROMPT = "You are a concise assistant. Chat with the user naturally."
 
 prompt = ChatPromptTemplate.from_messages([("system", SYSTEM_PROMPT), ("user", "{input}")])
 

@@ -19,19 +19,8 @@ dev = [
     "black>=26.3.1",
     "grandalf>=0.8",
     "pyright>=1.1.408",
-    "ruff>=0.15.8",
 ]
 
 [tool.black]
 line-length = 130
 target-version = ["py313"]
-
-[tool.ruff]
-line-length = 130
-
-[tool.ruff.lint]
-extend-select = ["E501"]
-
-[tool.ruff.format]
-quote-style = "double"
-indent-style = "space"

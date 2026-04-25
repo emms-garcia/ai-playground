@@ -10,8 +10,6 @@ from langchain_core.messages import BaseMessage, HumanMessage, ToolMessage
 from langchain_core.tools import tool
 from langchain_community.retrievers import BM25Retriever
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langgraph.store.memory import InMemoryStore
-
 
 RAW_DOCS = [
     Document(
@@ -108,7 +106,7 @@ Response style:
 - Do not add any information that is not in the tool results.
 """
 
-agent = create_agent(LLM, [search_docs], system_prompt=SYSTEM_PROMPT, store=InMemoryStore())
+agent = create_agent(LLM, [search_docs], system_prompt=SYSTEM_PROMPT)
 
 
 def run_app(user_input: str) -> list[Document]:

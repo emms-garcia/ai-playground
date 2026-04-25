@@ -1,8 +1,11 @@
 {
   "[python]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "charliermarsh.ruff"
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
-  "ruff.format.preview": true,
+  "black-formatter.args": [
+    "--line-length",
+    "130"
+  ],
   "python.terminal.useEnvFile": true,
 }

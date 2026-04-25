@@ -11,6 +11,22 @@ uv sync
 export GROQ_API_KEY=your_key_here
 ```
 
+## Development
+
+Format Python code with:
+
+```bash
+uv run black .
+```
+
+Type-check examples with:
+
+```bash
+uv run pyright .
+```
+
+VS Code workspace settings are configured to format Python files with Black on save.
+
 ## Examples
 
 ### `langchain_minimal_example.py`
@@ -72,7 +88,6 @@ The same agent built manually with LangGraph, exposing the internals that `creat
 uv run langgraph_agent_example.py
 ```
 
-
 <div align="center">
   <img src="assets/langgraph_agent_example.png" alt="langgraph_agent_example graph" />
 </div>
@@ -92,9 +107,10 @@ with open('assets/langgraph_agent_example.png', 'wb') as f:
 
 A simple Groq-backed LangGraph chat that preserves conversation state with `InMemorySaver`. Demonstrates:
 
-- Compiling a `StateGraph` with `compile(checkpointer=checkpointer)`
+- Compiling a `StateGraph` with an `InMemorySaver` checkpointer
 - Accumulating chat messages with `add_messages`
 - Continuing a conversation by reusing the same `thread_id`
+- Printing the raw graph state after each turn
 
 ```bash
 uv run langgraph_checkpointer_example.py
