@@ -8,6 +8,7 @@ from langchain.agents import create_agent
 from langchain.chat_models import init_chat_model
 from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage, BaseMessage, ToolMessage
+from langgraph.store.memory import InMemoryStore
 
 
 # 1. Define tools
@@ -44,7 +45,7 @@ SYSTEM_PROMPT = """
 
     Task: Use the best tool(s) to answer the user's question. If the user's question is ambiguous, ask for clarification.
 """
-agent = create_agent(LLM, TOOLS, system_prompt=SYSTEM_PROMPT)
+agent = create_agent(LLM, TOOLS, system_prompt=SYSTEM_PROMPT, store=InMemoryStore())
 
 
 # 4. App entry point

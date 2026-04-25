@@ -14,11 +14,7 @@ from langmem import create_manage_memory_tool, create_search_memory_tool
 USER_ID = "user-1"
 THREAD_ID = "thread-1"
 
-LLM = init_chat_model(
-    model="llama-3.1-8b-instant",
-    api_key=SecretStr(os.environ["GROQ_API_KEY"]),
-    model_provider="groq",
-)
+LLM = init_chat_model(model="llama-3.1-8b-instant", api_key=SecretStr(os.environ["GROQ_API_KEY"]), model_provider="groq")
 SYSTEM_PROMPT = """
 # Role
 - You are a friendly movie recommendation assistant.
@@ -85,10 +81,6 @@ agent = create_agent(
 )
 
 
-def config(user_id: str = USER_ID, thread_id: str = THREAD_ID) -> RunnableConfig:
-    return {"configurable": {"user_id": user_id, "thread_id": thread_id}}
-
-
 def print_memories(user_id: str = USER_ID) -> None:
     memories = store.search(("memories", user_id), limit=20)
     print("\n--- raw long-term memory store ---")
@@ -99,7 +91,7 @@ def print_memories(user_id: str = USER_ID) -> None:
 def run_app(user_input: str, user_id: str = USER_ID, thread_id: str = THREAD_ID) -> str:
     result = agent.invoke(
         {"messages": [HumanMessage(content=user_input)]},
-        config=config(user_id=user_id, thread_id=thread_id),
+        config=RunnableConfig({"configurable": {"user_id": user_id, "thread_id": thread_id}}),
     )
     print_memories(user_id)
     return str(result["messages"][-1].content)

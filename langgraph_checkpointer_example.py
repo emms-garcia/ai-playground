@@ -15,11 +15,7 @@ SYSTEM_PROMPT = """
     Task: Chat naturally with the user. Use the conversation history when answering.
 """
 
-LLM = init_chat_model(
-    model="llama-3.1-8b-instant",
-    api_key=SecretStr(os.environ["GROQ_API_KEY"]),
-    model_provider="groq",
-)
+LLM = init_chat_model(model="llama-3.1-8b-instant", api_key=SecretStr(os.environ["GROQ_API_KEY"]), model_provider="groq")
 
 
 def model_node(state: AgentState) -> dict:

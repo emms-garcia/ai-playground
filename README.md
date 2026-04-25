@@ -37,6 +37,28 @@ A CLI chat agent built with `create_agent` from LangChain. Demonstrates:
 uv run langchain_create_agent_example.py
 ```
 
+### `langchain_rag_example.py`
+
+A small agentic RAG example using local Invincible lore summaries. Demonstrates:
+
+- Modeling source material as LangChain `Document` objects
+- Splitting documents with `RecursiveCharacterTextSplitter`
+- Retrieving relevant chunks with `BM25Retriever`
+- Exposing retrieval as a `search_docs` tool for `create_agent`
+- Printing retrieved context and citing source paths in the final answer
+
+```bash
+uv run langchain_rag_example.py
+```
+
+Try this flow:
+
+```text
+why is Omni-Man's role on Earth a problem for Mark?
+who is Allen the Alien?
+what are the main recurring threats?
+```
+
 ### `langgraph_agent_example.py`
 
 The same agent built manually with LangGraph, exposing the internals that `create_agent` abstracts away. Demonstrates:
