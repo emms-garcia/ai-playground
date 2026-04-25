@@ -31,9 +31,7 @@ def get_current_time() -> tuple[str, str]:
 
     Only use this if the user asks for the current time.
     """
-    time = datetime.datetime.now(datetime.timezone.utc).strftime(
-        "%Y-%m-%d %H:%M:%S UTC"
-    )
+    time = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
     return f"The current time is: {time}", time
 
 
@@ -57,9 +55,7 @@ SYSTEM_PROMPT = """
 
 # 2. Define model
 API_KEY = SecretStr(os.environ["GROQ_API_KEY"])
-LLM = init_chat_model(
-    model="llama-3.1-8b-instant", api_key=API_KEY, model_provider="groq"
-).bind_tools(TOOLS)
+LLM = init_chat_model(model="llama-3.1-8b-instant", api_key=API_KEY, model_provider="groq").bind_tools(TOOLS)
 
 
 # 3. Define graph nodes
@@ -77,11 +73,7 @@ def should_continue(state: AppState) -> Literal["tools", "__end__"]:
 
 # 4. Define graph nodes (continued)
 def collect_artifacts_node(state: AppState) -> dict:
-    new_results = {
-        msg.name: msg.artifact
-        for msg in state["messages"]
-        if isinstance(msg, ToolMessage) and msg.name is not None
-    }
+    new_results = {msg.name: msg.artifact for msg in state["messages"] if isinstance(msg, ToolMessage) and msg.name is not None}
     return {"tool_results": {**state["tool_results"], **new_results}}
 
 
@@ -110,9 +102,7 @@ def run_app(user_input: str) -> dict[str, object]:
         "messages": [HumanMessage(content=user_input)],
         "tool_results": {},
     }
-    for event_type, data in graph.stream(
-        initial_state, stream_mode=["messages", "values"]
-    ):
+    for event_type, data in graph.stream(initial_state, stream_mode=["messages", "values"]):
         match event_type, data:
             case "messages", (BaseMessage() as message, {"langgraph_node": "model"}):
                 if isinstance(message.content, str):

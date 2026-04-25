@@ -8,9 +8,7 @@ from langchain_core.output_parsers import StrOutputParser
 
 SYSTEM_PROMPT = "You are a concise assistant for {company_name}."
 
-prompt = ChatPromptTemplate.from_messages(
-    [("system", SYSTEM_PROMPT), ("user", "{input}")]
-)
+prompt = ChatPromptTemplate.from_messages([("system", SYSTEM_PROMPT), ("user", "{input}")])
 
 LLM = init_chat_model(
     model="llama-3.1-8b-instant",

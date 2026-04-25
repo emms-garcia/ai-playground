@@ -84,3 +84,23 @@ Try this flow:
 my name is Emmanuel
 what is my name?
 ```
+
+### `langmem_memory_store_example.py`
+
+A Groq-backed movie recommendation assistant with LangMem and a LangGraph memory store. Demonstrates:
+
+- Giving the agent LangMem-backed `save_memory` and `search_memories` tools
+- Storing long-term movie taste memories in `InMemoryStore`
+- Scoping memories by `user_id` with `("memories", "{user_id}")`
+- Printing the raw long-term memory store after every turn
+
+```bash
+uv run langmem_memory_store_example.py
+```
+
+Try this flow:
+
+```text
+I like slow-burn sci-fi and I dislike superhero movies
+recommend a movie for tonight
+```

@@ -17,9 +17,7 @@ def get_current_time() -> tuple[str, str]:
 
     Only use this if the user asks for the current time.
     """
-    time = datetime.datetime.now(datetime.timezone.utc).strftime(
-        "%Y-%m-%d %H:%M:%S UTC"
-    )
+    time = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
     return f"The current time is: {time}", time
 
 
@@ -38,9 +36,7 @@ TOOLS = [get_current_time, multiply]
 
 # 2. Define model
 API_KEY = SecretStr(os.environ["GROQ_API_KEY"])
-LLM = init_chat_model(
-    model="llama-3.1-8b-instant", api_key=API_KEY, model_provider="groq"
-)
+LLM = init_chat_model(model="llama-3.1-8b-instant", api_key=API_KEY, model_provider="groq")
 
 # 3. Build agent (handles tool call loop automatically)
 SYSTEM_PROMPT = """

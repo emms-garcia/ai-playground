@@ -9,7 +9,6 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import END, START, StateGraph
 
-
 SYSTEM_PROMPT = """
     Role: AI Assistant.
 
@@ -51,9 +50,7 @@ def run_app(user_input: str, thread_id: str = "demo-thread") -> str:
 if __name__ == "__main__":
     thread_id = "demo-thread"
     print(f"Using thread_id={thread_id}")
-    print(
-        "The in-memory checkpointer preserves this chat while the process is running."
-    )
+    print("The in-memory checkpointer preserves this chat while the process is running.")
     while True:
         user_input = input(">> ")
         if user_input.lower() in {"exit", "quit"}:
