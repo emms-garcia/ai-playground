@@ -29,7 +29,7 @@ VS Code workspace settings are configured to format Python files with Black on s
 
 ## Examples
 
-### `langchain_minimal_example.py`
+### `examples/langchain_minimal_example.py`
 
 A minimal LCEL chain using `ChatPromptTemplate`. Demonstrates:
 
@@ -38,10 +38,10 @@ A minimal LCEL chain using `ChatPromptTemplate`. Demonstrates:
 - Invoking the chain with a dict of template variables
 
 ```bash
-uv run langchain_minimal_example.py
+uv run examples/langchain_minimal_example.py
 ```
 
-### `langchain_create_agent_example.py`
+### `examples/langchain_create_agent_example.py`
 
 A CLI chat agent built with `create_agent` from LangChain. Demonstrates:
 
@@ -50,10 +50,10 @@ A CLI chat agent built with `create_agent` from LangChain. Demonstrates:
 - Streaming the final text response token by token while capturing tool results
 
 ```bash
-uv run langchain_create_agent_example.py
+uv run examples/langchain_create_agent_example.py
 ```
 
-### `langchain_rag_example.py`
+### `examples/langchain_rag_example.py`
 
 A small agentic RAG example using local Invincible lore summaries. Demonstrates:
 
@@ -64,7 +64,7 @@ A small agentic RAG example using local Invincible lore summaries. Demonstrates:
 - Printing retrieved context and citing source paths in the final answer
 
 ```bash
-uv run langchain_rag_example.py
+uv run examples/langchain_rag_example.py
 ```
 
 Try this flow:
@@ -75,7 +75,7 @@ who is Allen the Alien?
 what are the main recurring threats?
 ```
 
-### `langgraph_agent_example.py`
+### `examples/langgraph_agent_example.py`
 
 The same agent built manually with LangGraph, exposing the internals that `create_agent` abstracts away. Demonstrates:
 
@@ -85,7 +85,7 @@ The same agent built manually with LangGraph, exposing the internals that `creat
 - Streaming text tokens and reading `tool_results` from the final state using dual `stream_mode=["messages", "values"]`
 
 ```bash
-uv run langgraph_agent_example.py
+uv run examples/langgraph_agent_example.py
 ```
 
 <div align="center">
@@ -96,14 +96,13 @@ To regenerate:
 
 ```bash
 uv run python -c "
-from langgraph_agent_example import graph
+from examples.langgraph_agent_example import graph
 with open('assets/langgraph_agent_example.png', 'wb') as f:
     f.write(graph.get_graph().draw_mermaid_png())
 "
 ```
 
-
-### `langgraph_checkpointer_example.py`
+### `examples/langgraph_checkpointer_example.py`
 
 A simple Groq-backed LangGraph chat that preserves conversation state with `InMemorySaver`. Demonstrates:
 
@@ -113,7 +112,7 @@ A simple Groq-backed LangGraph chat that preserves conversation state with `InMe
 - Printing the raw graph state after each turn
 
 ```bash
-uv run langgraph_checkpointer_example.py
+uv run examples/langgraph_checkpointer_example.py
 ```
 
 Try this flow:
@@ -123,7 +122,7 @@ my name is Emmanuel
 what is my name?
 ```
 
-### `langmem_memory_store_example.py`
+### `examples/langmem_memory_store_example.py`
 
 A Groq-backed movie recommendation assistant with LangMem and a LangGraph memory store. Demonstrates:
 
@@ -133,7 +132,7 @@ A Groq-backed movie recommendation assistant with LangMem and a LangGraph memory
 - Printing the raw long-term memory store after every turn
 
 ```bash
-uv run langmem_memory_store_example.py
+uv run examples/langmem_memory_store_example.py
 ```
 
 Try this flow:
