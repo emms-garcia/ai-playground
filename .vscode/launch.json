@@ -1,0 +1,35 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run API",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["api.main:app", "--reload"],
+      "jinja": true,
+      "justMyCode": true
+    },
+    {
+      "name": "Run UI",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceFolder}/ui",
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "ready on (https?://\\S+)",
+        "uriFormat": "%s",
+        "action": "openExternally"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Run API + UI",
+      "configurations": ["Run API", "Run UI"],
+      "stopAll": true
+    }
+  ]
+}

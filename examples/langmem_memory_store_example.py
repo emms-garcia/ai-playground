@@ -1,15 +1,14 @@
 import os
 from pprint import pprint
 
-from pydantic import SecretStr
-
 from langchain.agents import create_agent
 from langchain.chat_models import init_chat_model
 from langchain_core.messages import HumanMessage
-from langgraph.checkpoint.memory import InMemorySaver
 from langchain_core.runnables import RunnableConfig
+from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.store.memory import InMemoryStore
 from langmem import create_manage_memory_tool, create_search_memory_tool
+from pydantic import SecretStr
 
 USER_ID = "user-1"
 THREAD_ID = "thread-1"

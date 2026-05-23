@@ -5,6 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "ag-ui-langgraph>=0.0.36",
+    "fastapi>=0.136.1",
+    "isort>=8.0.1",
     "langchain>=1.2.14",
     "langchain-community>=0.4.1",
     "langchain-groq>=1.1.2",
@@ -20,8 +23,17 @@ dev = [
     "black>=26.3.1",
     "grandalf>=0.8",
     "pyright>=1.1.408",
+    "uvicorn>=0.47.0",
 ]
 
 [tool.black]
 line-length = 130
 target-version = ["py313"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py312"
+fix = true
+
+[tool.ruff.lint]
+select = ["I", "F401"]

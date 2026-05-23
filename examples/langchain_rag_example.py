@@ -1,15 +1,14 @@
 import os
 from typing import cast
 
-from pydantic import SecretStr
-
 from langchain.agents import create_agent
 from langchain.chat_models import init_chat_model
+from langchain_community.retrievers import BM25Retriever
 from langchain_core.documents import Document
 from langchain_core.messages import BaseMessage, HumanMessage, ToolMessage
 from langchain_core.tools import tool
-from langchain_community.retrievers import BM25Retriever
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from pydantic import SecretStr
 
 RAW_DOCS = [
     Document(

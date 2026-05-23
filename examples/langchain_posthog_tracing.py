@@ -1,15 +1,15 @@
+import datetime
 import os
 import uuid
-import datetime
-from posthog.client import Client as PostHogClient
-from posthog.ai.langchain import CallbackHandler
-from pydantic import SecretStr
 
 from langchain.agents import create_agent
 from langchain.chat_models import init_chat_model
-from langchain_core.messages import HumanMessage, AIMessage
+from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.tools import tool
 from langgraph.checkpoint.memory import InMemorySaver
+from posthog.ai.langchain import CallbackHandler
+from posthog.client import Client as PostHogClient
+from pydantic import SecretStr
 
 
 @tool
