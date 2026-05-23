@@ -4,6 +4,13 @@
     "charliermarsh.ruff",
     "ms-python.python",
     "ms-python.black-formatter",
-    "ms-python.pyright"
+    "ms-python.pyright",
+    // TypeScript / Next.js
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    // Tailwind CSS
+    "bradlc.vscode-tailwindcss",
+    // REST / API testing
+    "humao.rest-client"
   ]
 }
