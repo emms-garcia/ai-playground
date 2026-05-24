@@ -53,6 +53,19 @@ A CLI chat agent built with `create_agent` from LangChain. Demonstrates:
 uv run examples/langchain_create_agent_example.py
 ```
 
+### `examples/langchain_interrupts_example.py`
+
+A human-in-the-loop `create_agent` example that pauses before selected tool calls. Demonstrates:
+
+- Configuring `HumanInTheLoopMiddleware` to interrupt specific tools
+- Using `InMemorySaver` and `thread_id` so paused runs can resume safely
+- Reviewing pending tool actions and resuming with `approve`, `edit`, or `reject`
+- Editing tool arguments from the CLI before the paused run resumes
+
+```bash
+uv run examples/langchain_interrupts_example.py
+```
+
 ### `examples/langchain_rag_example.py`
 
 A small agentic RAG example using local Invincible lore summaries. Demonstrates:
